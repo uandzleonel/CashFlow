@@ -22,11 +22,14 @@ public class ExpensesController : CashFlowAPIBaseController
         }
         catch (ArgumentException ex)
         {
-            return BadRequest(ex.Message);
+            return BadRequest(new ResponseErrorJson(ex.Message));
         }
         catch
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Unknown error");
+            return StatusCode(
+                StatusCodes.Status500InternalServerError,
+                new ResponseErrorJson("Unknown error")
+            );
         }
     }
 }
