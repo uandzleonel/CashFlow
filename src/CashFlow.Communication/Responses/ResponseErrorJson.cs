@@ -3,10 +3,15 @@
 public class ResponseErrorJson
 {
     public bool Error { get; set; } = true;
-    public string Message { get; set; } = string.Empty;
+    public List<string> ErrorMessages { get; set; } = [];
 
     public ResponseErrorJson(string errorMessage)
     {
-        Message = errorMessage;
+        ErrorMessages = [errorMessage];
+    }
+
+    public ResponseErrorJson(List<string> errorMessages)
+    {
+        ErrorMessages = errorMessages;
     }
 }
